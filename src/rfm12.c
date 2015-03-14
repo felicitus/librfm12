@@ -87,6 +87,18 @@ rfm12_control_t ctrl;
  * (putting them directly into here allows GCC to optimize better)
 */
 
+#ifdef __PLATFORM_LINUX__
+
+static const char *device = "/dev/spidev0.1";
+
+void rfm12_set_spi_device (const char *path) {
+	device = path;
+}
+
+const char *rfm12_get_spi_device (void) {
+	return device;
+}
+#endif
 /* include spi functions into here */
 #include "include/rfm12_spi.c"
 #include "include/rfm12_spi_linux.c"

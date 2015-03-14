@@ -8,7 +8,6 @@
 #include <byteswap.h>
 #include <unistd.h>
 
-static const char *device = "/dev/spidev0.1";
 static int fd;
 static uint8_t mode = 0;
 static uint8_t bits = 8;
@@ -24,7 +23,7 @@ static void pabort(const char *s)
 static void spi_init(void) {
 	int ret = 0;
 
-	fd = open(device, O_RDWR);
+	fd = open(rfm12_get_spi_device(), O_RDWR);
 
 	if (fd < 0) {
 			pabort("driver not loaded? can't open device");

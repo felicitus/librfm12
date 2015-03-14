@@ -83,6 +83,10 @@
 void rfm12_init(void);
 void rfm12_tick(void);
 
+#ifdef __PLATFORM_LINUX__
+void rfm12_set_spi_device (const char *path);
+#endif
+
 
 #if RFM12_USE_RX_CALLBACK
 /* set the callback function pointer */
